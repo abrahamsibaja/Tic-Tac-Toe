@@ -10,22 +10,22 @@ module Tictactoe
 
     def verify_victory 
       @win_posibilities.each do |posibility| 
-        if @gameboard.cells.values_at(*posibility).all? {|cell| cell == @player_marks[@current_player]} 
-          @winner = @player_marks[@current_player]
+        if gameboard.cells.values_at(*posibility).all? {|cell| cell == player_marks[current_player]} 
+          @winner = player_marks[current_player]
         end
       end
     end
 
     def game_over?
-      @gameboard.full? || player_wins?
+      gameboard.full? || player_wins?
     end
 
     def change_player
-      @current_player = @current_player== "player_2" ? "player_1":"player_2"
+      @current_player = current_player== "player_2" ? "player_1":"player_2"
     end
 
     def player_wins?
-      !@winner.nil?
+      !winner.nil?
     end
   end
 end

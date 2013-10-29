@@ -4,7 +4,7 @@ module Tictactoe
     def initialize(output)
       @output = output
       @game = Game.new
-      @gameboard = @game.gameboard
+      @gameboard = game.gameboard
       @instructions_board = GameBoard.new
       fill_instructions_board
     end
@@ -15,10 +15,10 @@ module Tictactoe
 
     def game_cicle
       game_intro
-      until @game.game_over? do
+      until game.game_over? do
         make_movement
-        @game.verify_victory
-        @game.change_player
+        game.verify_victory
+        game.change_player
       end
       match_results
     end
@@ -26,7 +26,7 @@ module Tictactoe
     def game_intro
       welcome_message
       game_instructions
-      print_gameboard(@gameboard)
+      print_gameboard(gameboard)
     end
 
     def welcome_message
@@ -48,16 +48,16 @@ module Tictactoe
       position_message
       position = gets.to_i
       validate_position(position)
-      print_gameboard(@gameboard)
+      print_gameboard(gameboard)
     end
 
     def validate_position(position)
-      until @gameboard.valid_position?(position) do
+      until gameboard.valid_position?(position) do
         puts "Choose a valid position (1 - 9):"
         position = gets.to_i
       end
-      playerMark = @game.player_marks[@game.current_player]
-      @gameboard.position_to_mark(position, playerMark)
+      playerMark = game.player_marks[game.current_player]
+      gameboard.position_to_mark(position, playerMark)
     end
 
     def position_message
@@ -69,12 +69,12 @@ module Tictactoe
     end
 
     def tied_game_message
-      @output.puts "Tied Game !!" if @winner.nil?
+      @output.puts "Tied Game !!" if winner.nil?
     end
 
     def match_results
-      result = tied_game_message if @gameboard.full?
-      result = winner_message(@game.winner) if @game.player_wins?
+      result = tied_game_message if gameboard.full?
+      result = winner_message(game.winner) if game.player_wins?
       return result
     end
   end

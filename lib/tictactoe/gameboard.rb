@@ -14,11 +14,11 @@ module Tictactoe
     end
 
     def position_to_mark(position, mark)
-      @cells[position.to_i-1] = mark
+      cells[position.to_i-1] = mark
     end
     
     def full?
-      !@cells.include?(0)
+      !cells.include?(0)
     end
 
     def valid_position? position
@@ -32,7 +32,7 @@ private
     end
 
     def available_position?(position)
-      @cells[position-1] == 0
+      cells[position-1] == 0
     end
 
   end
