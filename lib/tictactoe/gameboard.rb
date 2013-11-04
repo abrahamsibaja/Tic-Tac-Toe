@@ -7,7 +7,11 @@ module Tictactoe
     attr_reader :cells
 
     def initialize
-      @cells = Array.new(9,0)
+      @cells = Array.new(total_positions , 0)
+    end
+
+    def total_positions
+      NUMBER_OF_ROWS * CELLS_X_ROW
     end
 
     def position_to_mark(position, mark)
