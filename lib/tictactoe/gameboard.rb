@@ -2,6 +2,7 @@ module Tictactoe
   class GameBoard
     NUMBER_OF_ROWS = 3
     CELLS_X_ROW = 3
+    FREE_POSITION = 0
 
     attr_reader :cells
 
@@ -28,7 +29,7 @@ private
     end
 
     def available_position?(position)
-      cells[position-1] == 0
+      cells[position-1] == FREE_POSITION
     end
 
   end
