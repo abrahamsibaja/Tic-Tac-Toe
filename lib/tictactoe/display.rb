@@ -41,7 +41,7 @@ module Tictactoe
 
     def print_gameboard(gameboard)
       board = gameboard.cells.dup
-      (1..gameboard.number_of_rows).each {@output.puts(board.shift(gameboard.cells_x_row).join" ")}
+      (1..Tictactoe::GameBoard::NUMBER_OF_ROWS).each {@output.puts(board.shift(Tictactoe::GameBoard::CELLS_X_ROW).join" ")}
     end
 
     def make_movement
@@ -69,7 +69,7 @@ module Tictactoe
     end
 
     def tied_game_message
-      @output.puts "Tied Game !!" if winner.nil?
+      @output.puts "Tied Game !!" if game.winner.nil?
     end
 
     def match_results
